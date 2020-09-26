@@ -16,12 +16,12 @@ public class ProductoController {
     private IProductoService service;
 
     @GetMapping("/listar")
-    public List<Producto> listas(){
+    public List<Producto> listas() {
         return service.findAll();
     }
 
     @GetMapping("/ver/{id}")
-    public  Producto detalle(@PathVariable Long id){
+    public Producto detalle(@PathVariable Long id) {
         return service.findById(id);
     }
 

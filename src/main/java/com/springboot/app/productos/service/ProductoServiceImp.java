@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ProductoServiceImp implements IProductoService{
+public class ProductoServiceImp implements IProductoService {
 
     @Autowired
     ProductoRepository repository;
@@ -17,7 +17,7 @@ public class ProductoServiceImp implements IProductoService{
     @Override
     @Transactional(readOnly = true)
     public List<Producto> findAll() {
-        return (List<Producto>)repository.findAll();
+        return (List<Producto>) repository.findAll();
     }
 
     @Override
