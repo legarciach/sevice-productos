@@ -21,7 +21,22 @@ public class ProductoController {
     }
 
     @GetMapping("/ver/{id}")
-    public Producto detalle(@PathVariable Long id) {
+    public Producto detalle(@PathVariable Long id) throws Exception {
+        //Prueba Hystrix
+        /*
+        if (true){
+            throw new Exception("Problemas al cargar producto....");
+        }
+        */
+
+        //Prueba Timeout
+        /*
+        try {
+            Thread.sleep(2000L);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        */
         return service.findById(id);
     }
 
