@@ -1,11 +1,10 @@
 package com.springboot.app.productos.controllers;
 
-import com.springboot.app.productos.models.entity.Producto;
+import com.springboot.app.commons.models.entity.Producto;
 import com.springboot.app.productos.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,5 +38,29 @@ public class ProductoController {
         */
         return service.findById(id);
     }
+
+    @PostMapping("/crear")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Producto crear(@RequestBody Producto producto){
+        return service.save(producto);
+    }
+
+    @PutMapping("/editar/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Producto editar(@PathVariable Long id, @RequestBody Producto producto){
+        Producto db = service.findById(id);
+        db.setNombre(producto.getNombre());
+        db.setPrecio(producto.getPrecio());
+        return service.save(db);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable Long id){
+        service.deleteById(id);
+    }
+
+
+
 
 }
