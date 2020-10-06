@@ -43,6 +43,7 @@ public class ProductoServiceImp implements IProductoService {
     @Override
     @Transactional
     public void deleteById(Long id) {
+        //prueba...
         repository.deleteById(id);
     }
 }
